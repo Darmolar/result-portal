@@ -1,0 +1,106 @@
+/*
+ * Copyright 2015
+ * Released under the MIT license
+ * https://github.com/jeffersonrpn/jquery-fab/blob/master/LICENSE.md
+ *
+ * @author: Jefferson Neves <jefferson.rpn@gmail.com>
+ * @version: 0.1.0
+ */
+
+.jfab_btns_wrapper{
+  right:0;
+  bottom:75px;
+  position:absolute;
+  display:none;
+  -webkit-transition: opacity 0.3s ease-in;
+       -moz-transition: opacity 0.3s ease-in;
+        -ms-transition: opacity 0.3s ease-in;
+         -o-transition: opacity 0.3s ease-in;
+            transition: opacity 0.3s ease-in;
+  pointer-events:all;
+}
+.jfab_btns_wrapper.show{
+  display:block;
+  opacity: 1;
+}
+.jfab_btns_wrapper button{
+  width:40px;
+  height:40px;
+  border-radius:100%;
+  background:#e74c3c;
+  margin-bottom:12px;
+  margin-right:26px;
+  padding:0;
+  border:none;
+  outline:none;
+  color:#ffffff;
+  font-size: 19px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:all ease-in .4s;  
+  pointer-events:all;
+  cursor: pointer;
+}
+.jfab_btns_wrapper .horizontal-fab:nth-child(1) .sub_fab_btn{
+   -webkit-transition-duration: 190ms;
+          transition-duration: 190ms;
+  -webkit-transform: translate3d(0, -30px, 0);
+          transform: translate3d(0, -30px, 0);
+  
+}
+
+.jfab_btns_wrapper .horizontal-fab:nth-child(2) .sub_fab_btn{
+   -webkit-transition-duration: 490ms;
+          transition-duration: 490ms;
+  -webkit-transform: translate3d(0, -20px, 0);
+          transform: translate3d(0, -20px, 0);
+   
+}
+.jfab_btns_wrapper .horizontal-fab:nth-child(3) .sub_fab_btn{
+  -webkit-transition-duration: 790ms;
+          transition-duration: 790ms;
+  -webkit-transform: translate3d(0, -10px, 0);
+          transform: translate3d(0, -10px, 0);
+  
+}
+#horizontal-fab-button .jfab_btns_wrapper .sub_fab_btn{
+   -webkit-transition-duration: 190ms;
+          transition-duration: 190ms;
+  -webkit-transform: translate3d(0, -30px, 0);
+          transform: translate3d(0, -30px, 0);
+}
+.jfab_btns_wrapper button:hover{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.32), 0 3px 6px rgba(0,0,0,0.46);
+}
+button.jfab_main_btn{
+  background-color:#e74c3c;
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#e74c3c;
+  right:16px;
+  bottom:16px;
+  position:absolute;
+  margin-right:0;
+  margin-bottom:0;
+  padding:0;
+  border:none;
+  outline:none;
+  color:#ffffff;
+  font-size:24px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  cursor: pointer;
+  pointer-events:all;
+}
+button:hover.jfab_main_btn{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.32), 0 3px 6px rgba(0,0,0,0.46);
+}
+.jfab_main_btn span{
+  transition:.5s;
+}
+.jfab_main_btn.rotate {
+  transform:rotate(45deg);
+  -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}

@@ -1,0 +1,305 @@
+<?php
+include('../controller/controller.php');
+if(!isset($_SESSION['uid']) && !isset($_SESSION['username'])){
+	
+	header('location:../index.html');
+}
+
+
+
+// $_SESSION['uid'] = 1;
+// $_SESSION['username'] = 'admin';
+// $_SESSION['school_id'] = 1;
+
+ //get student photo
+
+// $photo_data=$obj->Get_All_Data("SELECT * FROM `admin` join users on users.uid=student.uid");
+// //print_r($photo);
+// if(isset($photo_data[0]['photo'])){
+// $photo="../uploads/student/".$photo_data[0]['folder']."/".$photo_data[0]['photo']."";
+// }else{
+// 	$photo="../uploads/student/avatar.png";
+// }
+ 
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from ableproadmin.com/light/vertical/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Mar 2017 21:00:07 GMT -->
+<head>
+    <title>School Management</title>
+   
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+ 
+   <!-- Font Awesome -->
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- iconfont -->
+    <link rel="stylesheet" type="text/css" href="../assets/icon/icofont/css/icofont.css">
+
+    <!-- simple line icon -->
+    <link rel="stylesheet" type="text/css" href="../assets/icon/simple-line-icons/css/simple-line-icons.css">
+
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+
+    <!-- Chartlist chart css -->
+    <link rel="stylesheet" href="../assets/plugins/charts/chartlist/css/chartlist.css" type="text/css" media="all">
+
+    <!-- Weather css -->
+    <link href="../assets/css/svg-weather.css" rel="stylesheet">
+
+    <!-- Echart js -->
+    <script src="../assets/plugins/charts/echarts/js/echarts-all.js"></script>
+
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+
+    <!-- Responsive.css-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+
+		<!-- Tags css -->
+	<link rel="stylesheet" href="../assets/plugins/tags/css/bootstrap-tagsinput.css" />
+
+	
+    <!--color css-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/color/color-1.css" id="color"/>
+	
+	<!-- Calender css -->
+	<link rel="stylesheet" type="text/css" href="../assets/plugins/calender/css/fullcalendar.css">
+	<link rel="stylesheet" type="text/css" href="../assets/plugins/calender/css/fullcalendar.print.css" media='print'>
+
+ <!-- Data Table Css -->
+  <link rel="stylesheet" type="text/css" href="../assets/plugins/data-table/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/plugins/data-table/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/plugins/data-table/css/responsive.bootstrap4.min.css">
+  
+  
+  <!-- Select 2 css -->
+	<link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/plugins/select2/css/s2-docs.css">
+	
+	<!-- Multi Select css -->
+	<link rel="stylesheet" href="../assets/plugins/multi-select/css/bootstrap-multiselect.css" />
+	<link rel="stylesheet" href="../assets/plugins/multi-select/css/multi-select.css" />
+
+ 
+	  <!-- Modal animation CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/plugins/modal/css/component.css">
+
+ 
+</head>
+<body class="sidebar-mini fixed">
+    <div class="loader-bg">
+        <div class="loader-bar">
+        </div>
+    </div>
+<div class="wrapper">
+    <!--   <div class="loader-bg">
+    <div class="loader-bar">
+    </div>
+  </div> -->
+    <!-- Navbar-->
+    <header class="main-header-top hidden-print">
+        <a href="index-2.html" class="logo">SMS</a>
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button--><a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
+            <!-- Navbar Right Menu-->
+            <div class="navbar-custom-menu">
+                <ul class="top-nav">
+                    <!--Notification Menu-->
+
+                    <li class="dropdown pc-rheader-submenu message-notification search-toggle">
+                        <a href="#!" id="morphsearch-search" class="drop icon-circle txt-white">
+                            <i class="icofont icofont-search-alt-1"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown notification-menu">
+                        <a href="#!" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-danger header-badge">9</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="not-head">You have <b class="text-primary">4</b> new notifications.</li>
+                            <li class="bell-notification">
+                                <a href="javascript:;" class="media">
+                    <span class="media-left media-icon">
+                    <img class="img-circle" src="../assets/images/avatar-1.png" alt="User Image">
+                  </span>
+                                    <div class="media-body"><span class="block">Lisa sent you a mail</span><span class="text-muted block-time">2min ago</span></div></a>
+                            </li>
+                            <li class="bell-notification">
+                                <a href="javascript:;" class="media">
+                    <span class="media-left media-icon">
+                    <img class="img-circle" src="../assets/images/avatar-2.png" alt="User Image">
+                  </span>
+                                    <div class="media-body"><span class="block">Server Not Working</span><span class="text-muted block-time">20min ago</span></div></a>
+                            </li>
+                            <li class="bell-notification">
+                                <a href="javascript:;" class="media"><span class="media-left media-icon">
+                    <img class="img-circle" src="../assets/images/avatar-3.png" alt="User Image">
+                  </span>
+                                    <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block-time">3 hours ago</span></div></a>
+                            </li>
+                            <li class="not-footer">
+                                <a href="#!">See all notifications.</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- chat dropdown -->
+                   
+                    <!-- User Menu-->
+                    <li class="dropdown">
+                        <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
+                            <span><img class="img-circle " src="../assets/images/avatar-1.png" style="width:40px;" alt="User Image"></span>
+                            <span><b><?php echo $_SESSION['username'];  ?></b> <i class=" icofont icofont-simple-down"></i></span>
+
+                        </a>
+                        <ul class="dropdown-menu settings-menu">
+                            <li><a href="setting.php"><i class="icon-settings"></i> Settings</a></li>
+                            <li><a href="#!"><i class="icon-user"></i> Profile</a></li>
+                            <li><a href="inbox.php"><i class="icon-envelope-open"></i> My Messages</a></li>
+                            <li class="p-0">
+                                <div class="dropdown-divider m-0"></div>
+                            </li>
+                            <li><a href="#"><i class="icon-lock"></i> Lock Screen</a></li>
+                            <li><a href="../logout.php"><i class="icon-logout"></i> Logout</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+    <!-- Side-Nav-->
+    <aside class="main-sidebar hidden-print " >
+        <section class="sidebar" id="sidebar-scroll">
+            <div class="user-panel">
+                <div class="f-left image"><img src="../assets/images/avatar-1.png" alt="User Image" class="img-circle"></div>
+                <div class="f-left info">
+                    <p><?php echo $_SESSION['username'];  ?></p>
+                    <p class="designation">Administrator <i class="icofont icofont-caret-down m-l-5"></i></p>
+                </div>
+            </div>
+            <!-- sidebar profile Menu-->
+            <ul class="nav sidebar-menu extra-profile-list">
+                <li>
+                    <a class="waves-effect waves-dark" href="profile.html">
+                        <i class="icon-user"></i>
+                        <span class="menu-text">View Profile</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-dark" href="javascript:void(0)">
+                        <i class="icon-settings"></i>
+                        <span class="menu-text">Settings</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-dark" href="../logout.php">
+                        <i class="icon-logout"></i>
+                        <span class="menu-text">Logout</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+            </ul>
+            <!-- Sidebar Menu-->
+            <ul class="sidebar-menu">
+                <li class="nav-level">Navigation</li>
+                 <li><a href="dashboard.php"><i class="icofont icofont-dashboard"></i><span> Dashboard</span></a> </li>
+                 <li><a href="add_admin.php"><i class="icofont icofont-plus"></i><span> Add Admin</span></a> </li>
+         
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-film"></i>
+                    <span>Static Pages</span><i class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" href="add_page.php"><i class="icon-arrow-right"></i> Control Pages</a></li>
+                        <li><a class="waves-effect waves-dark" href="#"><i class="icon-arrow-right"></i>School Dashboard</a></li>
+                    </ul>
+                </li>
+                <!-- <li><a href="inbox.php"><i class="icofont icofont-ui-message"></i><span> Messages</span></a> </li> -->
+                <li><a href="calendar.php"><i class="icofont icofont-calendar"></i><span> Calendar</span></a> </li>
+                <li><a href="class_list.php"><i class="icofont icofont-ui-calendar"></i><span> Classes Schedule</span></a> </li>
+				
+				
+                <!-- li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span>Attendance</span><i class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" href="attendance.php"><i class="icon-arrow-right"></i> Attendance</a></li>
+						
+                        <li><a class="waves-effect waves-dark" href="attendance_stats_parse.php"><i class="icon-arrow-right"></i> Attendance Statistics</a></li>
+                    </ul>
+                </li>
+                 <li><a href="#"><i class="zmdi zmdi-comment-alt-text"></i><span>Staff Attendance</span></a> </li>-->
+        
+               <!--  <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-chart"></i><span> Hostel Management</span><i class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" href="hostel.php"><i class="icon-arrow-right"></i>Hostel</a></li>
+                        <li><a class="waves-effect waves-dark" href="hostel_cate.php"><i class="icon-arrow-right"></i> Hostel Category</a></li>
+                    </ul>
+                </li> -->
+			   <!-- <li><a href="library.php"><i class="icofont icofont-book-alt"></i><span> Library</span></a> </li> -->
+               <!-- <li><a href="#"><i class="icofont icofont-multimedia"></i><span> Media Center</span></a> </li>-->
+                <li><a href="add_teacher.php"><i class="icofont icofont-user-alt-2"></i><span> Teacher</span></a> </li>
+                <li><a href="add_student.php"><i class="icofont icofont-user-alt-5"></i><span> Student</span></a> </li>
+                <li><a href="add_parent.php"><i class="icofont icofont-user-female"></i><span> Parent</span></a> </li>
+                <li><a href="gradelevel.php"><i class="icofont icofont-tick-mark"></i><span> Grade Level</span></a> </li>
+                <!-- <li><a href="assignment.php"><i class="icofont icofont-read-book"></i><span> Assignment</span></a> </li> -->
+                <li><a href="study_material.php"><i class="icofont icofont-read-book"></i><span> Study Materials</span></a> </li>
+                <li><a href="exam.php"><i class="icofont icofont-read-book-alt"></i><span> Exam List</span></a> </li>
+                <li><a href="online_exam.php"><i class="icofont icofont-law-book"></i><span> Online Exam</span></a> </li>
+               <!--  <li><a href="newsboard.php"><i class="icofont icofont-newspaper"></i><span> News Board</span></a> </li> -->
+                <li><a href="event.php"><i class="icofont icofont-bathtub"></i><span> Event</span></a> </li>
+                <!-- <li><a href="transport.php"><i class="icofont icofont-bus-alt-3"></i><span> Transportation</span></a> </li> -->
+                <!-- <li><a href="add_subject.php"><i class="icofont icofont-book-alt"></i><span> Subject</span></a> </li> -->
+                <!-- <li><a href="report.php"><i class="icofont icofont-chart-bar-graph"></i><span> Report</span></a> </li> -->
+                <li><a href="inbox.php"><i class="icofont icofont-envelope-open"></i><span> Mail/SMS</span></a> </li>
+                <!-- <li><a href="#"><i class="icofont icofont-envelope-open"></i><span>SMS Setting</span></a> </li> -->
+				
+				<li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-chart"></i><span> Classes </span><i class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" href="add_class.php"><i class="icon-arrow-right"></i>Classes</a></li>
+                        <li><a class="waves-effect waves-dark" href="add_section.php"><i class="icon-arrow-right"></i> Section</a></li>
+                    </ul>
+                </li>
+				
+				<!--  <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-chart"></i><span> Accounting </span><i class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" href="fee_type.php"><i class="icon-arrow-right"></i>Fee Types</a></li>
+                        <li><a class="waves-effect waves-dark" href="fee_allocation.php"><i class="icon-arrow-right"></i> Fee Allocation</a></li>
+						
+                        <li><a class="waves-effect waves-dark" href="invoices.php"><i class="icon-arrow-right"></i> Invoices</a></li>
+						
+                        <li><a class="waves-effect waves-dark" href="payments.php"><i class="icon-arrow-right"></i> Payment</a></li>
+						
+                        <li><a class="waves-effect waves-dark" href="expense_cate.php"><i class="icon-arrow-right"></i> Expenses Category</a></li>
+                        <li><a class="waves-effect waves-dark" href="expenses.php"><i class="icon-arrow-right"></i> Expenses</a></li>
+                    </ul>
+                </li> -->
+				
+				
+				
+            </ul>
+        </section>
+    </aside>
+	
+	
+  <div class="content-wrapper">
+  <div class="container-fluid">
+
+      
+        <!-- Main content ends -->
